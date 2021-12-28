@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package penduduk;
+
+import "google/protobuf/empty.proto";
+
+service PendudukController {
+    rpc List(PendudukListRequest) returns (stream Penduduk) {}
+    rpc Create(Penduduk) returns (Penduduk) {}
+    rpc Retrieve(PendudukRetrieveRequest) returns (Penduduk) {}
+    rpc Update(Penduduk) returns (Penduduk) {}
+    rpc Destroy(Penduduk) returns (google.protobuf.Empty) {}
+}
+
+message Penduduk {
+    int64 id = 1;
+    string nik_pelapor = 2;
+    string nama_pelapor = 3;
+    string nama_terduga = 4;
+    string alamat_terduga = 5;
+    string gejala = 6;
+    string nama_petugas = 7;
+    string tgl_jemput = 8;
+    int32 jumlah = 9;
+}
+
+message PendudukListRequest {
+}
+
+message PendudukRetrieveRequest {
+    int64 id = 1;
+}
